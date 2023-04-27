@@ -1,19 +1,30 @@
 package br.com.erudio.data.vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+// Para ordenar os campos na chamada
+@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender", })
 public class PersonVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @JsonProperty("first_name")
     private String firstName;
 
+    // Para alterar o nome do campo na chamada
+    @JsonProperty("last_name")
     private String lastName;
 
     private String address;
 
+    // Para ignorar o campo na chamada
+    @JsonIgnore
     private String gender;
 
     public PersonVO() {}
